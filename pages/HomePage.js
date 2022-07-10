@@ -28,10 +28,6 @@ export default function HomePage() {
             return items.filter((i) => i != item);
         });
     }
-
-
-
-
     return (
         <View style={styles.body}>
             <View style={styles.header}>
@@ -121,8 +117,3 @@ const styles = StyleSheet.create({
 });
 
 
-/**
- * 
- * 
- * 
- */
