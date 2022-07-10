@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Appbar, Button, Text, TextInput, useTheme, IconButton } from 'react-native-paper';
+import { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
+import { Appbar, Button, Text, TextInput, useTheme, IconButton, List } from 'react-native-paper';
 
 
 function ListItem({ children, onDeleteClick }) {
@@ -20,7 +20,6 @@ function ListItem({ children, onDeleteClick }) {
 export default function HomePage() {
 
     const [items, setItems] = useState([
-        "gne gne"
     ]);
     const [currentValue, setCurrentValue] = useState("");
 
@@ -29,6 +28,8 @@ export default function HomePage() {
             return items.filter((i) => i != item);
         });
     }
+
+
 
 
     return (
@@ -55,8 +56,10 @@ export default function HomePage() {
                 </View>
                 <View style={styles.listContainer}>
                     <Text style={styles.listContainerTitle}>Elenco attività</Text>
-                    <View>
-                        {items.map((item, index) => <ListItem key={index} onDeleteClick={() => deleteItem(item)}>{item}</ListItem>)}
+                    <View style={{ flex: 1 }}>
+                        <ScrollView>
+                            {items.map((item, index) => <ListItem key={index} onDeleteClick={() => deleteItem(item)}>{item}</ListItem>)}
+                        </ScrollView>
                     </View>
                 </View>
                 <View style={styles.bottomBar}>
