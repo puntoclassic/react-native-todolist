@@ -1,10 +1,10 @@
-import HomePage from './pages/HomePage';
-import { DefaultTheme, Provider as PaperProvider, Text } from 'react-native-paper';
+import HomePage from './src/pages/HomePage';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './src/redux/store';
 
 const theme = {
   ...DefaultTheme,
