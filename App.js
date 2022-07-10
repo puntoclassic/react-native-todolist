@@ -3,6 +3,8 @@ import { DefaultTheme, Provider as PaperProvider, Text } from 'react-native-pape
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const theme = {
   ...DefaultTheme,
@@ -15,18 +17,21 @@ const theme = {
   },
 };
 
+
 export default function App() {
   return (
     <SafeAreaProvider>
-      <PaperProvider theme={theme}>
-        <SafeAreaView style={{
-          backgroundColor: theme.colors.primary, marginTop: StatusBar.currentHeight,
-          flex: 1
-        }}>
-          <HomePage></HomePage>
-        </SafeAreaView>
-        <StatusBar style='light'></StatusBar>
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider theme={theme}>
+          <SafeAreaView style={{
+            backgroundColor: theme.colors.primary, marginTop: StatusBar.currentHeight,
+            flex: 1
+          }}>
+            <HomePage></HomePage>
+          </SafeAreaView>
+          <StatusBar style='light'></StatusBar>
+        </PaperProvider>
+      </Provider>
     </SafeAreaProvider >
   );
 }

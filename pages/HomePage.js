@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, View, ScrollView, FlatList } from 'react-native';
 import { Appbar, Button, Text, TextInput, useTheme, IconButton, List } from 'react-native-paper';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearList, addItem, removeItem } from '../redux/store';
+
 
 
 function ListItem({ children, onDeleteClick }) {
@@ -19,21 +22,29 @@ function ListItem({ children, onDeleteClick }) {
 
 export default function HomePage() {
 
-    const [items, setItems] = useState(() => {
-        var list = []
-        for (var i = 1; i <= 100; i++) {
-            list.push("Task n°" + i)
-        }
-        return list;
-    });
+    const { items } = useSelector((state) => state.todolist);
+    const dispatch = useDispatch()
 
     const [currentValue, setCurrentValue] = useState("");
 
-    const deleteItem = (item) => {
-        setItems((items) => {
-            return items.filter((i) => i != item);
-        });
+    const deleteItemAction = (index) => {
+        dispatch(removeItem({
+            index: index
+        }));
     }
+
+    const addItemAction = () => {
+        dispatch(addItem({
+            item: currentValue
+        }));
+        setCurrentValue("");
+    }
+
+    const clearListAction = () => {
+        dispatch(clearList())
+    }
+
+    console.log(items);
 
     return (
         <View style={styles.body}>
@@ -49,10 +60,7 @@ export default function HomePage() {
                             label="Descrizione"></TextInput>
                     </View>
                     <View style={styles.inputButtonContainer}>
-                        <Button onPress={() => {
-                            setItems([...items, currentValue]);
-                            setCurrentValue("");
-                        }} mode='contained' >
+                        <Button onPress={addItemAction} mode='contained' disabled={currentValue == ""} >
                             Aggiungi
                         </Button>
                     </View>
@@ -61,16 +69,15 @@ export default function HomePage() {
                     <Text style={styles.listContainerTitle}>Elenco attività</Text>
                     <View style={{ flex: 1 }}>
                         <FlatList data={items} renderItem={(itemData) => {
-                            return <ListItem key={itemData.index} onDeleteClick={() => deleteItem(itemData.item)}>{itemData.item}</ListItem>
+                            console.log(itemData.index);
+                            return <ListItem key={itemData.index} onDeleteClick={() => deleteItemAction(itemData.index)}>{itemData.item}</ListItem>
 
                         }}></FlatList>
                     </View>
                 </View>
                 <View style={styles.bottomBar}>
                     <View style={{ alignItems: 'flex-start', }}>
-                        <Button onPress={() => {
-                            setItems([]);
-                        }} mode='text' >
+                        <Button onPress={clearListAction} mode='text' >
                             Svuota lista
                         </Button>
                     </View>
