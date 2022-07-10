@@ -44,8 +44,6 @@ export default function HomePage() {
         dispatch(clearList())
     }
 
-    console.log(items);
-
     return (
         <View style={styles.body}>
             <View style={styles.header}>
@@ -69,7 +67,6 @@ export default function HomePage() {
                     <Text style={styles.listContainerTitle}>Elenco attività</Text>
                     <View style={{ flex: 1 }}>
                         <FlatList data={items} renderItem={(itemData) => {
-                            console.log(itemData.index);
                             return <ListItem key={itemData.index} onDeleteClick={() => deleteItemAction(itemData.index)}>{itemData.item}</ListItem>
 
                         }}></FlatList>
