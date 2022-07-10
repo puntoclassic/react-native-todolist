@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, View, ScrollView, FlatList } from 'react-native';
 import { Appbar, Button, Text, TextInput, useTheme, IconButton, List } from 'react-native-paper';
 
 
@@ -19,8 +19,14 @@ function ListItem({ children, onDeleteClick }) {
 
 export default function HomePage() {
 
-    const [items, setItems] = useState([
-    ]);
+    const [items, setItems] = useState(() => {
+        var list = []
+        for (var i = 1; i <= 100; i++) {
+            list.push("Task n°" + i)
+        }
+        return list;
+    });
+
     const [currentValue, setCurrentValue] = useState("");
 
     const deleteItem = (item) => {
@@ -28,6 +34,7 @@ export default function HomePage() {
             return items.filter((i) => i != item);
         });
     }
+
     return (
         <View style={styles.body}>
             <View style={styles.header}>
@@ -53,9 +60,10 @@ export default function HomePage() {
                 <View style={styles.listContainer}>
                     <Text style={styles.listContainerTitle}>Elenco attività</Text>
                     <View style={{ flex: 1 }}>
-                        <ScrollView>
-                            {items.map((item, index) => <ListItem key={index} onDeleteClick={() => deleteItem(item)}>{item}</ListItem>)}
-                        </ScrollView>
+                        <FlatList data={items} renderItem={(itemData) => {
+                            return <ListItem key={itemData.index} onDeleteClick={() => deleteItem(itemData.item)}>{itemData.item}</ListItem>
+
+                        }}></FlatList>
                     </View>
                 </View>
                 <View style={styles.bottomBar}>
@@ -117,3 +125,8 @@ const styles = StyleSheet.create({
 });
 
 
+/**
+ * 
+ * 
+ * 
+ */
