@@ -7,6 +7,7 @@ const todolistSlice = createSlice({
     name: 'todolist',
     initialState: {
         items: [],
+        modalVisible: false
     },
     reducers: {
         addItem: (state, action) => {
@@ -18,8 +19,10 @@ const todolistSlice = createSlice({
         },
         clearList: (state) => {
             state.items = [];
+        },
+        setModalVisible: (state, action) => {
+            state.modalVisible = action.payload.visible
         }
-
     },
 
 })
@@ -29,7 +32,7 @@ const todolistSlice = createSlice({
 
 
 
-export const { addItem, clearList, removeItem } = todolistSlice.actions
+export const { addItem, clearList, removeItem, setModalVisible } = todolistSlice.actions
 
 const store = configureStore({
     reducer: {

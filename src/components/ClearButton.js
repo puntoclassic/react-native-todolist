@@ -4,21 +4,18 @@ import { useDispatch } from 'react-redux';
 import { clearList } from '../redux/store';
 import styles from "../styles"
 
-
-
-
 export default function ClearButton() {
     const dispatch = useDispatch()
 
+    const buttonPressAction = () => {
+        dispatch(clearList())
+    }
+
     return <>
-        <View style={styles.bottomBar}>
-            <View style={{ alignItems: 'flex-start', }}>
-                <Button onPress={() => {
-                    dispatch(clearList())
-                }} mode='text' >
-                    Svuota lista
-                </Button>
-            </View>
+        <View style={styles.clearButton}>
+            <Button onPress={buttonPressAction} mode='text' >
+                Svuota lista
+            </Button>
         </View>
     </>
 }

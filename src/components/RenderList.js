@@ -16,14 +16,13 @@ export default function RenderList() {
     }
 
     const renderItem = (itemData) =>
-        <ListItem key={itemData.index} onDeleteClick={() => onDeleteClickAction(itemData.index)}>{itemData.item}</ListItem>;
-
+        <ListItem key={itemData.index} onDeleteClick={onDeleteClickAction.bind(this, itemData.index)}>{itemData.item}</ListItem>;
 
     return <>
-        <View style={styles.listContainer}>
-            <Text style={styles.listContainerTitle}>Elenco attività</Text>
-            <View style={{ flex: 1 }}>
-                <FlatList data={items} renderItem={renderItem}></FlatList>
+        <View style={styles.renderList}>
+            <Text style={styles.renderListTitle}>Elenco attività</Text>
+            <View style={styles.renderListBody}>
+                <FlatList data={items} renderItem={renderItem} keyExtractor={(item, index) => index}></FlatList>
             </View>
         </View>
     </>

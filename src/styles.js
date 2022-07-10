@@ -1,14 +1,19 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    body: {
+    homePage: {
         flex: 1
     },
-    header: { height: 60, justifyContent: 'center', alignContent: 'center', alignItems: 'center' },
-    headerTitle: {
+    homePageHeader: {
+        height: 60,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center'
+    },
+    homePageHeaderTitle: {
         color: 'white', fontSize: 24
     },
-    container: {
+    homePageBody: {
         padding: 16,
         flexDirection: "column",
         justifyContent: 'space-between',
@@ -18,28 +23,44 @@ export default StyleSheet.create({
         borderTopRightRadius: 30,
         marginHorizontal: 16,
     },
-
-    inputContainer: {
+    addForm: {
         flexDirection: "column",
         padding: 8,
-        borderBottomColor: 'grey',
-        borderBottomWidth: 1,
-        paddingBottom: 16
+        backgroundColor: 'white'
     },
-    inputButtonContainer: {
+    addFormButton: {
         alignItems: 'flex-end', marginTop: 8
     },
-    listContainer: {
+    renderList: {
         marginTop: 8,
         flexGrow: 2,
         padding: 8,
     },
-    listContainerTitle: {
+    renderListTitle: {
         fontWeight: 'bold'
     },
-    bottomBar: {
+    clearButton: {
         marginTop: 8,
         padding: 8,
-
+        alignItems: 'flex-start'
+    },
+    listItem: {
+        height: 40,
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    listItemText: {
+        flex: 5
+    },
+    listItemButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    renderListBody: {
+        flex: 1
+    },
+    modal: {
+        margin: 16,
     }
 });
