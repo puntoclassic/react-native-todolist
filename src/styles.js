@@ -26,7 +26,10 @@ export default StyleSheet.create({
     addForm: {
         flexDirection: "column",
         padding: 8,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+    },
+    addFormContent: {
+
     },
     addFormButton: {
         alignItems: 'flex-end', marginTop: 8
@@ -60,7 +63,6 @@ export default StyleSheet.create({
     renderListBody: {
         flex: 1
     },
-    modal: {
-        margin: 16,
-    }
+
+
 });
