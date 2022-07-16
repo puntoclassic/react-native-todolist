@@ -34,7 +34,7 @@ export default function AddForm() {
 
     return <>
         <Portal >
-            <Modal style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} contentContainerStyle={{ width: "70%", }} visible={modalVisible} onDismiss={toggleModal}>
+            <Modal style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} contentContainerStyle={{ width: 350, }} visible={modalVisible} onDismiss={toggleModal}>
                 <View style={styles.addForm}>
                     <View>
                         <TextInput
