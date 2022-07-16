@@ -14,7 +14,7 @@ export default function AddButton() {
     }
 
     return <>
-        <View style={styles.addForm}>
+        <View>
             <View style={styles.addFormButton}>
                 <Button onPress={toggleModal}>
                     Aggiungi

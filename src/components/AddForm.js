@@ -33,8 +33,8 @@ export default function AddForm() {
     }
 
     return <>
-        <Portal>
-            <Modal style={styles.modal} visible={modalVisible} onDismiss={toggleModal}>
+        <Portal >
+            <Modal style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} contentContainerStyle={{ width: "70%", }} visible={modalVisible} onDismiss={toggleModal}>
                 <View style={styles.addForm}>
                     <View>
                         <TextInput
@@ -53,3 +53,7 @@ export default function AddForm() {
 
     </>
 }
+
+/**
+ *  
+ */
